@@ -2,6 +2,10 @@ import os
 import json
 
 try:
+    from importlib import reload as reload_module
+except ImportError:
+    from imp import reload as reload_module
+try:
     from urllib.request import urlopen
     from http.client import HTTPMessage
 except ImportError:
@@ -9,7 +13,6 @@ except ImportError:
 
 from django.test import TestCase
 from django.test.utils import override_settings
-from django.utils.six.moves import reload_module
 from django.contrib.gis.geos import Point
 from django.utils.html import escapejs
 from django.conf import settings as test_app_settings
